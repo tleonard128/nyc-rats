@@ -63,6 +63,8 @@ Our provisional model is linear regression that inputs the total tons of garbage
 
 
 The results are shown below after initalizing and fitting with the code model = LinearRegression() and Using model.fit(X, y): 
+
+
 ![model1_results](model1_results.png)
 
 With an intercept of 2,086 and a coefficient of .00056854. Our model represents the function f(x)=2086+.00056854x suggesting that every community disctrict contains 2,086 rats plus .00056854 of a rat for every one ton of garbage it produces. 
