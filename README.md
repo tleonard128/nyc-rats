@@ -26,7 +26,7 @@ The COVID-19 pandemic also coincided with a racial reckoning which left many won
 
 Is Nurse's claim that areas with high complaints are coming from areas like public housing or are wealthier zip codes more likely to file a complaint? To improve the city’s rat mitigation efforts in an equitable way, we must first understand the relationship between reported rat sightings and key indicators.
 
-The purpose of this project is to evaluate various attributes throughout the 59 community districts in New York City to identify key indicators leading to the largest reported rat sightings. These various attributes may include how much trash and/or the type of trash each community district produces, how the land area is used (commercial, residential, office, retail, etc.), weather factors such as amount of rainfall, or socioeconomic factors like income and educational attainment.  
+The purpose of this project is to evaluate various attributes throughout the 59 [community districts](https://www1.nyc.gov/assets/planning/download/pdf/about/publications/maps/nyc-community-districts-map.pdf) in New York City to identify key indicators leading to the largest reported rat sightings. These various attributes may include how much trash and/or the type of trash each community district produces, how the land area is used (commercial, residential, office, retail, etc.), weather factors such as amount of rainfall, or socioeconomic factors like income and educational attainment.  
 
 Finally, we have chosen to organize the data based on community districts because if changes or preventative actions are made as a result of our work, it will likely occur at the local level. Our project allows residents to use their voting power to appeal to their local community leaders for impactful changes. Likewise, local community leaders can use our project to make informed, data-driven policies.   
 
@@ -49,38 +49,24 @@ This database contains over 22,000 rows and provides monthly collection tonnages
 
 ---
 ## Database Integration
-The provisional data base consists of **59 rows** representing the 59 [community districts](https://www1.nyc.gov/assets/planning/download/pdf/about/publications/maps/nyc-community-districts-map.pdf) in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats in (X time period) in the respective community district and tons_of_garbage represents the total tons of garbage in (X time period) in the respective community district.  
-Merge Zipcode or borough 
-target : Sum of reports 
-features: socioeconomic factors (income, rent, etc)
+The provisional data base consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats in (X time period) in the respective community district and tons_of_garbage represents the total tons of garbage in (X time period) in the respective community district. 
 
-Team members will be expected to present a provisional database that stands in for the final database and accomplishes the following:
-
-Sample data that mimics the expected final database structure or schema
-Draft machine learning model is connected to the provisional database
-In a SQL database we will 
-
-The team members are expected to present a fully integrated database, including the following:
-Database stores static data for use during the project
-Database interfaces with the project in some format (e.g., scraping updates the database)
-Includes at least two tables (or collections, if using MongoDB)
-Includes at least one join using the database language (not including any joins in Pandas)
-Includes at least one connection string (using SQLAlchemy or PyMongo)
+To create our provisional database, we had to concatenated the Rat Sightings and Tonnage of Trash datasets. For both data sets, we summed the total rat sightings and tonnage of trash respectively. Then we merged the data sets by community district.  
 
 ---
 ## Machine Learning Model 
-Our model is **supervised learning for regression**. Since our database deals with labeled data, we selected supervised learning. Our model will to used to predict, based on data from community districts in NYC, the number of reported rat sightings. Because the final output will be a number, we chose regression over classification.  
+Our model is **supervised learning for regression**. Since our database deals with labeled data, we selected supervised learning. Our model is used to predict, based on data from community districts in NYC, the number of reported rat sightings. Because the final output will be a number, we chose regression over classification.  
 
-Our provisional model is linear regression that inputs the total tons of garbage and outputs the total reported rat sightings for community districts.  In the simplified example above, we know whether or not the first two patients have diabetes. That is, the dataset is labeled. Each row represents a patient, and the "Has Diabetes" column is the label that informs whether or not the patient has diabetes. The status of the third patient is unknown, and based on this patient's age and BMI, the goal is to predict whether or not this person is diabetic. 
+Our provisional model is linear regression that inputs the total tons of garbage and outputs the total reported rat sightings for community districts.
+
 ![model1_inputs_and_outputs](model1_inputs_and_outputs.png)
 
+
+The results are shown below after initalizing and fitting with the code model = LinearRegression() and Using model.fit(X, y): 
 ![model1_results](model1_results.png)
 
+With an intercept of 2,086 and a coefficient of .00056854. Our model represents the function f(x)=2086+.00056854x suggesting that every community disctrict contains 2,086 rats plus .00056854 of a rat for every one ton of garbage it produces. 
 
-The final machine learning model will be a regression model.  This model will take in the reported rat sightings and socioeconomic factors from the database and output an increase or decrease in reported rat sightings based on the socioeconomic factors. 
-Type of Factors: 
-* trash tonnage data
-* income 
-* cost of rent
+However, our model has an r-squared of 0.0283 meaning there is only a 2.8% indicating that the model explains a proportion of variance in the total rats that can be explained by tons of garbage. Therefor, we will need to continue to refine the model. 
 
 
