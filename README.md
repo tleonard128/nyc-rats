@@ -67,8 +67,8 @@ The results are shown below after initalizing and fitting with the code model = 
 
 ![model1_results](model1_results.png)
 
-With an intercept of 2,086 and a coefficient of .00056854. Our model represents the function f(x)=2086+.00056854x suggesting that every community disctrict contains 2,086 rats plus .00056854 of a rat for every one ton of garbage it produces. 
+With an intercept of 2,086 and a coefficient of .00056854. Our model represents the function f(x)=2086+.00056854x suggesting that every community disctrict has an average of 2,086 rats sightings and every ton of garbae produces .00056854 of a rat sighting.
 
-However, our model has an r-squared of 0.0283 meaning there is only a 2.8% indicating that the model explains a proportion of variance in the total rats that can be explained by tons of garbage. Therefor, we will need to continue to refine the model. 
+However, our model has an r-squared of 0.0283 meaning that only 2.8% of trash tonnage variance accurately indicated the number of rat sightings. Our chart also indicates that our variable is a poor predictor of rat sightings, as there were many districts that were outliers in terms of the amount of trash produced and the number of rat sightings. For example, some districts produced trash in the middle of the range of all districts but had rat sightings almost double that of comparable trash producers. Therefore, we will need to continue to refine the model. Our group has proposed looking at land use data and possibly socioeconomic factors that we can add and hopefully predict more accurate results. 
 
 
