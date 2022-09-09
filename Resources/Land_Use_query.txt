@@ -1,0 +1,73 @@
+DROP TABLE land_use;
+
+---- creating table for Land Use
+-----import data from Primary_Land_Use_Tax_Lot_Output__PLUTO_.csv
+CREATE TABLE Land_Use (
+	borough VARCHAR(50),
+    community_board integer,
+    census_tract_2010 real,
+    zonedist1 VARCHAR(50),
+    landuse integer,
+    lotarea real,
+    bldgarea integer,
+    latitude real,
+    longitude real
+);
+
+SELECT * FROM Land_Use;
+
+----Manipulating Land Use data into borough/Community Board
+--- By Land Use Totals 
+
+CREATE EXTENSION tablefunc;
+
+
+drop table PIVOT_LU;
+CREATE TABLE PIVOT_LU(lu int, cb int, LAsum numeric);
+INSERT INTO PIVOT_LU (
+SELECT lu.landuse,
+	lu.community_board, SUM(lotarea) as LAsum
+FROM Land_Use as lu
+GROUP BY 
+    community_board,landuse);	
+SELECT * FROM PIVOT_LU;
+
+----transposing data into pivot table format
+SELECT *
+FROM   crosstab (
+ 'SELECT CB, LU, LAsum
+   FROM   PIVOT_LU
+   ORDER  BY 1,2'  
+   ) AS  final_result(
+        CB int,                   -- needs a table alias!
+        "LU1" numeric,                -- resulting columns are numeric!
+        "LU2" numeric,
+        "LU3" numeric,
+	    "LU4" numeric,
+        "LU5" numeric,
+	    "LU6" numeric,
+        "LU7" numeric,
+	    "LU8" numeric,
+	    "LU9" numeric,
+	    "LU10" numeric,
+	    "LU11" numeric       
+    );
+
+
+---- creating table for Land Use from xls CLEANED PLUTO data
+----import from pct_LUarea_byCB__PLUTO_cleaned.csv
+CREATE TABLE Land_Use_merge_ready (CB numeric,
+		pct_LU1 numeric,
+		pct_LU2 numeric,	
+		pct_LU3 numeric,
+		pct_LU4 numeric,
+		pct_LU5 numeric,
+		pct_LU6 numeric,
+		pct_LU7 numeric, 
+		pct_LU8 numeric, 
+		pct_LU9 numeric,
+		pct_LU10 numeric,	
+		pct_LU11 numeric
+);
+	
+SELECT * FROM Land_Use_merge_ready;
