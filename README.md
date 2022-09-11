@@ -65,7 +65,7 @@ The provisional data base consists of **fifty-nine rows** representing the 59 co
 To create our provisional database, we had to concatenated the Rat Sightings and Tonnage of Trash datasets. For both data sets, we summed the total rat sightings and tonnage of trash respectively. Then we merged the data sets by community district.  
 
 ### Preliminary Model
-The provisional data base consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats per month in the respective community district and tons_of_garbage represents the total tons of garbage in per month in the respective community district. 
+The provisional data base consists of **fifty-nine rows** representing the 59 community districts in New York City. The preliminary model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats per month in the respective community district and tons_of_garbage represents the total tons of garbage in per month in the respective community district. 
 
 To create our provisional database, we concatenated the Rat Sightings and Tonnage of Trash datasets using SQL. For both data sets, we summed the total rat sightings and tonnage of trash respectively. Then we merged the data sets by community district. We also created data sets for each land use variable to test their correlation after testing our trash tonnage data.
 
@@ -98,13 +98,11 @@ Due to our linear regression results we decided to try a logistic regression ana
 
 
 #### Data preprocessing for logistic regression
-In order to create a logistic regression model we need to create a binary variable out of our rat data. We use the already collected total rat sightings per community district and term the districts that have more than 570 sightings as outbreak districts whereas those below 570 are normal. 
+In order to create a logistic regression model we need to create a binary variable out of our rat data. We use the already collected total rat sightings per community district and term the districts that have more than 2,500 sightings as outbreak districts whereas those below 2,500 are normal. 
 
 ### Possible further analysis
 We propose using our weak predicting variables together in a random forest model.
 
-
-### Preliminary Model
 
 --- 
 ## Dashboard 
