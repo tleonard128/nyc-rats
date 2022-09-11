@@ -60,12 +60,12 @@ This database contains over 850,000 rows of extensive land use and geographic da
 ![QuickDBD-rats_of_nyc](QuickDBD-rats_of_nyc.png.png)
 
 ### Provisional Model 
-The provisional data base consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats per month in the respective community district and tons_of_garbage represents the total tons of garbage in per month in the respective community district. 
+The provisional database consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats per month in the respective community district and tons_of_garbage represents the total tons of garbage in per month in the respective community district. 
 
 To create our provisional database, we merged the Rat Sightings and Tonnage of Trash datasets by community district using SQL. For both data sets, we summed the total rat sightings and tonnage of trash respectively for each community district. 
 
 ### Preliminary Model
-The preliminary data base consists of **fifty-nine rows** representing the 59 community districts in New York City and **twenty-one columns** representing:
+The preliminary database consists of **fifty-nine rows** representing the 59 community districts in New York City and **twenty-one columns** representing:
 * 1 column for the community discrict (primary key) 
 * 1 column for total rat sightings 
 * 1 column for label: "normal" or "outbreak" 
