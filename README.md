@@ -64,10 +64,11 @@ The provisional data base consists of **fifty-nine rows** representing the 59 co
 
 To create our provisional database, we had to concatenated the Rat Sightings and Tonnage of Trash datasets. For both data sets, we summed the total rat sightings and tonnage of trash respectively. Then we merged the data sets by community district.  
 
+### Preliminary Model
+
+
 ---
 ## Machine Learning Model 
-### Current Model 
-
 ### Provisional Model 
 Our model is **supervised learning for regression**. Since our database deals with labeled data, we selected supervised learning. Our model is used to predict, based on data from community districts in NYC, the number of reported rat sightings. Because the final output will be a number, we chose regression over classification.  
 
@@ -85,6 +86,9 @@ With an intercept of 2,086 and a coefficient of .00056854. Our model represents 
 
 However, our model has an r-squared of 0.0283 meaning that only 2.8% of trash tonnage variance accurately indicated the number of rat sightings. Our chart also indicates that our variable is a poor predictor of rat sightings, as there were many districts that were outliers in terms of the amount of trash produced and the number of rat sightings. For example, some districts produced trash in the middle of the range of all districts but had rat sightings almost double that of comparable trash producers. Therefore, we will need to continue to refine the model. Our group has proposed looking at land use data and possibly socioeconomic factors that we can add and hopefully predict more accurate results. 
 
+### Preliminary Model
+
+--- 
 ## Dashboard 
 We will use Tableau to create the final dashboard. This will contain interactive elements such as allowing users to filter by community districts or various time frames. 
 
