@@ -105,7 +105,7 @@ First, we split the data into trainig and testing groups using the code:  X_trai
 
 Next, we trained the model using the code: classifier = LogisticRegression(solver='lbfgs', random_state=1) and classifier.fit(X_train, y_train)
 
-Our preliminary model has an accuracy score of 0.5333333333333333. Thus, our model identified 53.3% of test groups accuarately. While the accuaracy score of .53 is below 0.7, it is a significant improvement from the provisional model. Therefore, our logisitic regression model is more accuarate than the linear regression model, but we will need to continue to refine the model. Our group has proposed using under and over sampling techiniques as well as using our weak predicting variables together in a random forest model.
+Our preliminary model has an accuracy score of 0.5333333333333333. Thus, our model identified 53.3% of test groups accuarately. While the accuaracy score of .53 is below 0.7, it is a significant improvement from the provisional model. Therefore, our logisitic regression model is more accuarate than the linear regression model, but we will need to continue to refine the model. Our group has proposed using under and over sampling techiniques as well as using our weak predicting variables together in a random forest model to increase the accuracy score. Additionaly, we will use an imbalanced classification reports that assesses the accuracy, precision, and sensitivity to select a final model. 
 
 
 --- 
