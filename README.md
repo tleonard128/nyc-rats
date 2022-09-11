@@ -99,28 +99,13 @@ After looking at initial land use data, our model still performed poorly. We use
 ![Linear_regression_results](Linear_regression_results.png)
 
 
-Our preliminary model is **supervised learning for logistic regression**. Since our database deals with labeled data, we selected supervised learning. Our model is used to categorize, based on data from community districts in NYC, whether the reported rat sightings are normal or suggest an outbreak. Because the final output will be a label, we chose classification. We used sklearn, matplotlib, and pandas to calculate our results. 
+Our preliminary model is **supervised learning for logistic regression**. Since our database deals with labeled data, we selected supervised learning. In order to create a logistic regression model we needed to create a binary variable out of our rat data. Using results from the provisional linear regression model, we identified the 50th percentile of 2,500 or fewer rat sightings as normal and anything greater as an outbreak.  We used sklearn, matplotlib, and pandas to calculate our results. 
 
-Our model splits and trains the data. 
-from sklearn.model_selection import train_test_split
+First, we split the data into trainig and testing groups using the code:  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1, stratify=y)
 
-X_train, X_test, y_train, y_test = train_test_split(X, 
-                                                    y, 
-                                                    random_state=1, 
-                                                    stratify=y)
-                                                    
-                                                 
+Next, we trained the model using the code: classifier = LogisticRegression(solver='lbfgs', random_state=1) and classifier.fit(X_train, y_train)
 
-from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression(solver='lbfgs', random_state=1)
-
-
-classifier.fit(X_train, y_train)
-#### Data preprocessing for logistic regression
-In order to create a logistic regression model we need to create a binary variable out of our rat data. We use the already collected total rat sightings per community district and term the districts that have more than 2,500 sightings as outbreak districts whereas those below 2,500 are normal. 
-
-### Possible further analysis
-We propose using our weak predicting variables together in a random forest model.
+Our preliminary model has an accuracy score of 0.5333333333333333. Thus, our model identified 53.3% of test groups accuarately. While the accuaracy score of .53 is below 0.7, it is a significant improvement from the provisional model. Therefore, our logisitic regression model is more accuarate than the linear regression model, but we will need to continue to refine the model. Our group has proposed using under and over sampling techiniques as well as using our weak predicting variables together in a random forest model.
 
 
 --- 
