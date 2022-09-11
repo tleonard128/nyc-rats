@@ -94,7 +94,7 @@ With an intercept of 2,086 and a coefficient of .00056854. Our model represents 
 However, our model has an r-squared of 0.0283 meaning that only 2.8% of trash tonnage variance accurately indicated the number of rat sightings. Our chart also indicates that our variable is a poor predictor of rat sightings, as there were many districts that were outliers in terms of the amount of trash produced and the number of rat sightings. For example, some districts produced trash in the middle of the range of all districts but had rat sightings almost double that of comparable trash producers. Therefore, we will need to continue to refine the model. Our group has proposed looking at land use data and possibly socioeconomic factors that we can add and hopefully predict more accurate results.
 
 ### Preliminary Model 
-After looking at initial land use data, our model still performed poorly. We used data that categorized land use based on 11 different categories, but still never saw an r-squared score greater than 0.19 (see table below). Based on these results we decided to impliment a logistic regression model.
+After looking at initial land use data, our model still performed poorly. We assess other variables in a linear regression model, but still never saw an r-squared score near 0.7 (see table below). Based on these results we decided to impliment a logistic regression model.
 
 ![Linear_regression_results](Linear_regression_results.png)
 
@@ -105,7 +105,7 @@ First, we split the data into trainig and testing groups using the code:  X_trai
 
 Next, we trained the model using the code: classifier = LogisticRegression(solver='lbfgs', random_state=1) and classifier.fit(X_train, y_train)
 
-Our preliminary model has an accuracy score of 0.5333333333333333. Thus, our model identified 53.3% of test groups accuarately. While the accuaracy score of .53 is below 0.7, it is a significant improvement from the provisional model. Therefore, our logisitic regression model is more accuarate than the linear regression model, but we will need to continue to refine the model. Our group has proposed using under and over sampling techiniques as well as using our weak predicting variables together in a random forest model to increase the accuracy score. Additionaly, we will use an imbalanced classification reports that assesses the accuracy, precision, and sensitivity to select a final model. 
+Our preliminary model has an accuracy score of 0.5333333333333333. Thus, our model identified 53.3% of test groups accuarately. While the accuaracy score of .53 is below 0.7, it is a significant improvement from the provisional model. Therefore, our logisitic regression model is more accuarate than the linear regression model, but we will need to continue to refine the model. Our group has proposed using under and over sampling techiniques as well as using our weak predicting variables together in a random forest model to increase the accuracy score. Additionaly, we will use imbalanced classification reports that assesses the accuracy, precision, and sensitivity in order to select a final model. 
 
 
 --- 
