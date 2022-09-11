@@ -60,17 +60,19 @@ This database contains over 850,000 rows of extensive land use and geographic da
 ![QuickDBD-rats_of_nyc](QuickDBD-rats_of_nyc.png.png)
 
 ### Provisional Model 
-The provisional data base consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats in (X time period) in the respective community district and tons_of_garbage represents the total tons of garbage in (X time period) in the respective community district. 
+The provisional data base consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats per month in the respective community district and tons_of_garbage represents the total tons of garbage in per month in the respective community district. 
 
 To create our provisional database, we had to concatenated the Rat Sightings and Tonnage of Trash datasets. For both data sets, we summed the total rat sightings and tonnage of trash respectively. Then we merged the data sets by community district.  
 
 ### Preliminary Model
+The provisional data base consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats per month in the respective community district and tons_of_garbage represents the total tons of garbage in per month in the respective community district. 
 
+To create our provisional database, we concatenated the Rat Sightings and Tonnage of Trash datasets using SQL. For both data sets, we summed the total rat sightings and tonnage of trash respectively. Then we merged the data sets by community district. We also created data sets for each land use variable to test their correlation after testing our trash tonnage data.
 
 ---
 ## Machine Learning Model 
 ### Provisional Model 
-Our model is **supervised learning for regression**. Since our database deals with labeled data, we selected supervised learning. Our model is used to predict, based on data from community districts in NYC, the number of reported rat sightings. Because the final output will be a number, we chose regression over classification.  
+Our model is **supervised learning for regression**. Since our database deals with labeled data, we selected supervised learning. Our model is used to predict, based on data from community districts in NYC, the number of reported rat sightings. Because the final output will be a number, we chose regression over classification. We used scipy, matplotlib and pandas to calculate our results. 
 
 Our provisional model is linear regression that inputs the total tons of garbage and outputs the total reported rat sightings for community districts.
 
@@ -84,7 +86,23 @@ The results are shown below after initalizing and fitting with the code model = 
 
 With an intercept of 2,086 and a coefficient of .00056854. Our model represents the function f(x)=2086+.00056854x suggesting that every community disctrict has an average of 2,086 rats sightings and every ton of garbae produces .00056854 of a rat sighting.
 
-However, our model has an r-squared of 0.0283 meaning that only 2.8% of trash tonnage variance accurately indicated the number of rat sightings. Our chart also indicates that our variable is a poor predictor of rat sightings, as there were many districts that were outliers in terms of the amount of trash produced and the number of rat sightings. For example, some districts produced trash in the middle of the range of all districts but had rat sightings almost double that of comparable trash producers. Therefore, we will need to continue to refine the model. Our group has proposed looking at land use data and possibly socioeconomic factors that we can add and hopefully predict more accurate results. 
+However, our model has an r-squared of 0.0283 meaning that only 2.8% of trash tonnage variance accurately indicated the number of rat sightings. Our chart also indicates that our variable is a poor predictor of rat sightings, as there were many districts that were outliers in terms of the amount of trash produced and the number of rat sightings. For example, some districts produced trash in the middle of the range of all districts but had rat sightings almost double that of comparable trash producers. Therefore, we will need to continue to refine the model. Our group has proposed looking at land use data and possibly socioeconomic factors that we can add and hopefully predict more accurate results.
+
+After looking at initial land use data, our model still performed poorly. We used data that categorized land use based on 11 different categories, but still never saw an r-squared score greater than 0.19. Based on these results we decided to try a logistic regression model.
+
+![Linear_regression_results](Linear_regression_results.png)
+
+
+### Preliminary Model
+Due to our linear regression results we decided to try a logistic regression analysis based on some of the stats from our linear analysis.
+
+
+#### Data preprocessing for logistic regression
+In order to create a logistic regression model we need to create a binary variable out of our rat data. We use the already collected total rat sightings per community district and term the districts that have more than 570 sightings as outbreak districts whereas those below 570 are normal. 
+
+### Possible further analysis
+We propose using our weak predicting variables together in a random forest model.
+
 
 ### Preliminary Model
 
