@@ -30,6 +30,8 @@ The purpose of this project is to evaluate various attributes throughout the 59 
 
 Finally, we have chosen to organize the data based on community districts because if changes or preventative actions are made as a result of our work, it will likely occur at the local level. Our project allows residents to use their voting power to appeal to their local community leaders for impactful changes. Likewise, local community leaders can use our project to make informed, data-driven policies.   
 
+For more information about this project, visit the [google slides](https://docs.google.com/presentation/d/1NuBLtA4dG-Bo6xwujSTi2HlrkTTZjnnAzIHUrRO8FwQ/edit?usp=sharing). 
+
 ### Questions Project Hopes to Answer 
 * What types of neighborhoods report high levels of rat sightings? 
 * What attributes do these neighborhoods share in common?
@@ -47,15 +49,35 @@ This database contains over 200,000 rows of data from all 311 Service Requests f
 #### [Tonnage of Trash](https://data.cityofnewyork.us/City-Government/DSNY-Monthly-Tonnage-Data/ebb7-mvp5/data)
 This database contains over 22,000 rows and provides monthly collection tonnages that the Department of Sanitation collects from NYC residences and institutions updated monthly on NYC Open Data. 
 
+#### [Primary Land Use Tax Lot Output (PLUTO)](https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks/data)
+This database contains over 850,000 rows of extensive land use and geographic data at the tax lot level. The PLUTO files contain more than seventy fields derived from data maintained by city agencies.
+
+
 ---
 ## Database Integration
-The provisional data base consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats in (X time period) in the respective community district and tons_of_garbage represents the total tons of garbage in (X time period) in the respective community district. 
+### SQL 
 
-To create our provisional database, we had to concatenated the Rat Sightings and Tonnage of Trash datasets. For both data sets, we summed the total rat sightings and tonnage of trash respectively. Then we merged the data sets by community district.  
+![QuickDBD-rats_of_nyc](QuickDBD-rats_of_nyc.png.png)
+
+### Provisional Model 
+The provisional database consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats per month in the respective community district and tons_of_garbage represents the total tons of garbage in per month in the respective community district. 
+
+To create our provisional database, we merged the Rat Sightings and Tonnage of Trash datasets by community district using SQL. For both data sets, we summed the total rat sightings and tonnage of trash respectively for each community district. 
+
+### Preliminary Model
+The preliminary database consists of **fifty-nine rows** representing the 59 community districts in New York City and **twenty-one columns** representing:
+* 1 column for the community discrict (primary key) 
+* 1 column for total rat sightings 
+* 1 column for label: "normal" or "outbreak" 
+* 7 columns for the differeny types of trash - tons of trash  
+* 11 columns for the different types of land use - % of community district 
+
+To create our provisional database, we merged the Rat Sightings, Tonnage of Trash, and Primary Land Use Tax Lot Output (PLUTO) datasets by community district using SQL. First we expanded our provisional database by including all seven types of trash. Next, we created a column to categorize the total rat sightings as normal (2,500 rat sightins for fewer) or an outbreak (2,500+ rat sightings). Finally we summed each of the ll land use categories and divided them by the total land use area for each community district. 
 
 ---
 ## Machine Learning Model 
-Our model is **supervised learning for regression**. Since our database deals with labeled data, we selected supervised learning. Our model is used to predict, based on data from community districts in NYC, the number of reported rat sightings. Because the final output will be a number, we chose regression over classification.  
+### Provisional Model  
+Our provisional model is **supervised learning for regression**. Since our database deals with labeled data, we selected supervised learning. Our model is used to predict, based on data from community districts in NYC, the number of reported rat sightings. Because the final output will be a number, we chose regression over classification. We used scipy, matplotlib and pandas to calculate our results. 
 
 Our provisional model is linear regression that inputs the total tons of garbage and outputs the total reported rat sightings for community districts.
 
@@ -69,5 +91,25 @@ The results are shown below after initalizing and fitting with the code model = 
 
 With an intercept of 2,086 and a coefficient of .00056854. Our model represents the function f(x)=2086+.00056854x suggesting that every community disctrict has an average of 2,086 rats sightings and every ton of garbae produces .00056854 of a rat sighting.
 
-However, our model has an r-squared of 0.0283 meaning that only 2.8% of trash tonnage variance accurately indicated the number of rat sightings. Our chart also indicates that our variable is a poor predictor of rat sightings, as there were many districts that were outliers in terms of the amount of trash produced and the number of rat sightings. For example, some districts produced trash in the middle of the range of all districts but had rat sightings almost double that of comparable trash producers. Therefore, we will need to continue to refine the model. Our group has proposed looking at land use data and possibly socioeconomic factors that we can add and hopefully predict more accurate results. 
+However, our model has an r-squared of 0.0283 meaning that only 2.8% of trash tonnage variance accurately indicated the number of rat sightings. Our chart also indicates that our variable is a poor predictor of rat sightings, as there were many districts that were outliers in terms of the amount of trash produced and the number of rat sightings. For example, some districts produced trash in the middle of the range of all districts but had rat sightings almost double that of comparable trash producers. Therefore, we will need to continue to refine the model. Our group has proposed looking at land use data and possibly socioeconomic factors that we can add and hopefully predict more accurate results.
+
+### Preliminary Model 
+After looking at initial land use data, our model still performed poorly. We assess other variables in a linear regression model, but still never saw an r-squared score near 0.7 (see table below). Based on these results we decided to impliment a logistic regression model.
+
+![Linear_regression_results](Linear_regression_results.png)
+
+
+Our preliminary model is **supervised learning for logistic regression**. Since our database deals with labeled data, we selected supervised learning. In order to create a logistic regression model we needed to create a binary variable out of our rat data. Using results from the provisional linear regression model, we identified the 50th percentile of 2,500 or fewer rat sightings as normal and anything greater as an outbreak.  We used sklearn, matplotlib, and pandas to calculate our results. 
+
+First, we split the data into trainig and testing groups using the code:  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1, stratify=y)
+
+Next, we trained the model using the code: classifier = LogisticRegression(solver='lbfgs', random_state=1) and classifier.fit(X_train, y_train)
+
+Our preliminary model has an accuracy score of 0.5333333333333333. Thus, our model identified 53.3% of test groups accuarately. While the accuaracy score of .53 is below 0.7, it is a significant improvement from the provisional model. Therefore, our logisitic regression model is more accuarate than the linear regression model, but we will need to continue to refine the model. Our group has proposed using under and over sampling techiniques as well as using our weak predicting variables together in a random forest model to increase the accuracy score. Additionaly, we will use imbalanced classification reports that assesses the accuracy, precision, and sensitivity in order to select a final model. 
+
+
+--- 
+## Dashboard 
+We will use Tableau to create the final dashboard. This will contain interactive elements such as allowing users to filter by community districts or various time frames. 
+
 
