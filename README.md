@@ -30,6 +30,8 @@ The purpose of this project is to evaluate various attributes throughout the 59 
 
 Finally, we have chosen to organize the data based on community districts because if changes or preventative actions are made as a result of our work, it will likely occur at the local level. Our project allows residents to use their voting power to appeal to their local community leaders for impactful changes. Likewise, local community leaders can use our project to make informed, data-driven policies.   
 
+For more information about this project, visit the [google slides](https://docs.google.com/presentation/d/1NuBLtA4dG-Bo6xwujSTi2HlrkTTZjnnAzIHUrRO8FwQ/edit?usp=sharing). 
+
 ### Questions Project Hopes to Answer 
 * What types of neighborhoods report high levels of rat sightings? 
 * What attributes do these neighborhoods share in common?
@@ -47,14 +49,26 @@ This database contains over 200,000 rows of data from all 311 Service Requests f
 #### [Tonnage of Trash](https://data.cityofnewyork.us/City-Government/DSNY-Monthly-Tonnage-Data/ebb7-mvp5/data)
 This database contains over 22,000 rows and provides monthly collection tonnages that the Department of Sanitation collects from NYC residences and institutions updated monthly on NYC Open Data. 
 
+#### [Primary Land Use Tax Lot Output (PLUTO)](https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks/data)
+This database contains over 850,000 rows of extensive land use and geographic data at the tax lot level. The PLUTO files contain more than seventy fields derived from data maintained by city agencies.
+
+
 ---
 ## Database Integration
+### SQL 
+
+![QuickDBD-rats_of_nyc](QuickDBD-rats_of_nyc.png.png)
+
+### Provisional Model 
 The provisional data base consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats in (X time period) in the respective community district and tons_of_garbage represents the total tons of garbage in (X time period) in the respective community district. 
 
 To create our provisional database, we had to concatenated the Rat Sightings and Tonnage of Trash datasets. For both data sets, we summed the total rat sightings and tonnage of trash respectively. Then we merged the data sets by community district.  
 
 ---
 ## Machine Learning Model 
+### Current Model 
+
+### Provisional Model 
 Our model is **supervised learning for regression**. Since our database deals with labeled data, we selected supervised learning. Our model is used to predict, based on data from community districts in NYC, the number of reported rat sightings. Because the final output will be a number, we chose regression over classification.  
 
 Our provisional model is linear regression that inputs the total tons of garbage and outputs the total reported rat sightings for community districts.
@@ -70,5 +84,8 @@ The results are shown below after initalizing and fitting with the code model = 
 With an intercept of 2,086 and a coefficient of .00056854. Our model represents the function f(x)=2086+.00056854x suggesting that every community disctrict has an average of 2,086 rats sightings and every ton of garbae produces .00056854 of a rat sighting.
 
 However, our model has an r-squared of 0.0283 meaning that only 2.8% of trash tonnage variance accurately indicated the number of rat sightings. Our chart also indicates that our variable is a poor predictor of rat sightings, as there were many districts that were outliers in terms of the amount of trash produced and the number of rat sightings. For example, some districts produced trash in the middle of the range of all districts but had rat sightings almost double that of comparable trash producers. Therefore, we will need to continue to refine the model. Our group has proposed looking at land use data and possibly socioeconomic factors that we can add and hopefully predict more accurate results. 
+
+## Dashboard 
+We will use Tableau to create the final dashboard. This will contain interactive elements such as allowing users to filter by community districts or various time frames. 
 
 
