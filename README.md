@@ -61,8 +61,9 @@ This database contains over 850,000 rows of extensive land use and geographic da
 
 ### Provisional Model 
 The provisional database consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats per month in the respective community district and tons_of_garbage represents the total tons of garbage in per month in the respective community district. 
-
+![Merges for rat sightings](https://github.com/tleonard128/nyc-rats/blob/main/rat_count_cd_sql.png)
 To create our provisional database, we merged the Rat Sightings and Tonnage of Trash datasets by community district using SQL. For both data sets, we summed the total rat sightings and tonnage of trash respectively for each community district. 
+![Merges for trash tonnage](https://github.com/tleonard128/nyc-rats/blob/main/trashtonnage_cd_sql.png)
 
 ### Preliminary Model
 The preliminary database consists of **fifty-nine rows** representing the 59 community districts in New York City and **twenty-one columns** representing:
@@ -100,6 +101,7 @@ After looking at initial land use data, our model still performed poorly. We ass
 
 
 Our preliminary model is **supervised learning for logistic regression**. Since our database deals with labeled data, we selected supervised learning. In order to create a logistic regression model we needed to create a binary variable out of our rat data. Using results from the provisional linear regression model, we identified the 50th percentile of 2,500 or fewer rat sightings as normal and anything greater as an outbreak.  We used sklearn, matplotlib, and pandas to calculate our results. 
+![Creating a binary variable from rat sightings](https://github.com/tleonard128/nyc-rats/blob/main/link_pivot_table.png)
 
 First, we split the data into trainig and testing groups using the code:  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1, stratify=y)
 
