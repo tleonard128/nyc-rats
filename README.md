@@ -57,7 +57,7 @@ This database contains over 850,000 rows of extensive land use and geographic da
 ## Database Integration
 ### SQL 
 
-![QuickDBD-rats_of_nyc](QuickDBD-rats_of_nyc.png.png)
+![QuickDBD-rats_of_nyc](https://github.com/tleonard128/nyc-rats/blob/lg_week_2/QuickDBD-rats_of_nyc_week_2.png)
 
 ### Provisional Model 
 The provisional database consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats per month in the respective community district and tons_of_garbage represents the total tons of garbage in per month in the respective community district. 
@@ -97,7 +97,7 @@ However, our model has an r-squared of 0.0283 meaning that only 2.8% of trash to
 ### Preliminary Model 
 After looking at initial land use data, our model still performed poorly. We assess other variables in a linear regression model, but still never saw an r-squared score near 0.7 (see table below). Based on these results we decided to impliment a logistic regression model.
 
-![Linear_regression_results](Linear_regression_results.png)
+![Linear_regression_results](https://github.com/tleonard128/nyc-rats/blob/lg_week_2/Linear_regression_results.png)
 
 
 Our preliminary model is **supervised learning for logistic regression**. Since our database deals with labeled data, we selected supervised learning. In order to create a logistic regression model we needed to create a binary variable out of our rat data. Using results from the provisional linear regression model, we identified the 50th percentile of 2,500 or fewer rat sightings as normal and anything greater as an outbreak.  We used sklearn, matplotlib, and pandas to calculate our results. 
