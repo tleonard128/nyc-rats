@@ -61,9 +61,9 @@ This database contains over 850,000 rows of extensive land use and geographic da
 
 ### Provisional Model 
 The provisional database consists of **fifty-nine rows** representing the 59 community districts in New York City. Each community district has many different features that may or may not be contributing to the reported rat sightings. As we refine the model, we are trying to identify and integrate those features into our model. The provisional model has **two columns**, total_rats and tons_of_garbage, where total_rats represents the total number of rats per month in the respective community district and tons_of_garbage represents the total tons of garbage in per month in the respective community district. 
-![Merges for rat sightings](https://github.com/tleonard128/nyc-rats/blob/main/rat_count_cd_sql.png)
+![Merges for rat sightings](https://github.com/tleonard128/nyc-rats/blob/main/Image_Links/rat_count_cd_sql.png)
 To create our provisional database, we merged the Rat Sightings and Tonnage of Trash datasets by community district using SQL. For both data sets, we summed the total rat sightings and tonnage of trash respectively for each community district. 
-![Merges for trash tonnage](https://github.com/tleonard128/nyc-rats/blob/main/trashtonnage_cd_sql.png)
+![Merges for trash tonnage](https://github.com/tleonard128/nyc-rats/blob/main/Image_Links/trashtonnage_cd_sql.png)
 
 ### Preliminary Model
 The preliminary database consists of **fifty-nine rows** representing the 59 community districts in New York City and **twenty-one columns** representing:
@@ -82,13 +82,13 @@ Our provisional model is **supervised learning for regression**. Since our datab
 
 Our provisional model is linear regression that inputs the total tons of garbage and outputs the total reported rat sightings for community districts.
 
-![model1_inputs_and_outputs](model1_inputs_and_outputs.png)
+![model1_inputs_and_outputs](https://github.com/tleonard128/nyc-rats/blob/main/Image_Links/model1_inputs_and_outputs.png)
 
 
 The results are shown below after initalizing and fitting with the code model = LinearRegression() and Using model.fit(X, y): 
 
 
-![model1_results](model1_results.png)
+![model1_results](https://github.com/tleonard128/nyc-rats/blob/main/Image_Links/model1_results.png)
 
 With an intercept of 2,086 and a coefficient of .00056854. Our model represents the function f(x)=2086+.00056854x suggesting that every community disctrict has an average of 2,086 rats sightings and every ton of garbae produces .00056854 of a rat sighting.
 
@@ -101,7 +101,7 @@ After looking at initial land use data, our model still performed poorly. We ass
 
 
 Our preliminary model is **supervised learning for logistic regression**. Since our database deals with labeled data, we selected supervised learning. In order to create a logistic regression model we needed to create a binary variable out of our rat data. Using results from the provisional linear regression model, we identified the 50th percentile of 2,500 or fewer rat sightings as normal and anything greater as an outbreak.  We used sklearn, matplotlib, and pandas to calculate our results. 
-![Creating a binary variable from rat sightings](https://github.com/tleonard128/nyc-rats/blob/main/link_pivot_table.png)
+![Creating a binary variable from rat sightings](https://github.com/tleonard128/nyc-rats/blob/main/Image_Links/link_pivot_table.png)
 
 First, we split the data into trainig and testing groups using the code:  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1, stratify=y)
 
