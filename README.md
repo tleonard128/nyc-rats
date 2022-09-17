@@ -109,6 +109,25 @@ Our preliminary model has an accuracy score of 0.5333333333333333. Thus, our mod
 
 --- 
 ## Dashboard 
-We will use Tableau to create the final dashboard. This will contain interactive elements such as allowing users to filter by community districts or various time frames. 
+
+
+https://public.tableau.com/app/profile/eliza.buffington/viz/rats_of_nyc/RatsofNYC 
+
+**The first tab gives an overview of our project**
+
+ ![Dashboard_intro](https://user-images.githubusercontent.com/49666078/190874299-bb3f40c1-7b60-4f20-bc52-786b621985f5.png)
+
+**The second tab explains the models that were chosen and three commonly found attributes amongst rat populations.**
+
+ ![dashboard_Model_analysis](https://user-images.githubusercontent.com/49666078/190874344-63f1127d-c7b5-4f36-bba0-9d10edf5bbe0.png)
+ 
+**The third tab gives an example of how to use the interactive dashboard.**
+
+ ![Slide 3 - example](https://user-images.githubusercontent.com/49666078/190874358-8cfb144f-d074-4879-8bbc-f4f57ffcd147.png)
+ 
+**The fourth tab is the interactive element for you to find out what factors contribute to rats in your NYC community district.**
+
+![interactive_dashboard](https://user-images.githubusercontent.com/49666078/190874375-f0511143-8faf-4388-a56b-3966f28d723d.png)
+
 
 
