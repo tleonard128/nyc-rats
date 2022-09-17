@@ -4,17 +4,6 @@ Eliza Buffington, Luke Gates, Tom Leonard, and Ana Moreira
 ![pizza-rat](https://user-images.githubusercontent.com/102329557/186464022-6beb59dc-43e6-4ab1-b51f-3a1c1c83b1c5.gif)
 
 
-## GitHub Organization & Communication 
-### GitHub Organization
-**Main Branch** 
-
-
-**Other Branches**
-* Eliza Buffington 
-* Luke Gates 
-* Tom Leonard
-* Ana Moreira 
-
 ## Overview of Project
 ### Purpose of Project
 In a Gothamist news article, [Rodents on the rise: How NYC is losing the rat battle](https://gothamist.com/news/rodents-on-the-rise-how-nyc-is-losing-the-rat-battle?fbclid=IwAR0pbcNAk-yfgqFUHerhvtJKHcjrvVLESGORmzxSIhFQwtooGSHg9uG7dXU), Jake Offenhartz asserts that complaints of rat sightings in 2021 increased by more than two-thirds compared to the same period in 2019. Offenhartz suggests that a citywide temporary halt of pest control inspections at the start of the pandemic may be a significant factor of this increase in reported rat sightings more than two years after the start of the COVID-19 pandemic. 
@@ -27,7 +16,7 @@ The purpose of this project is to evaluate various attributes throughout the 59 
 
 Finally, we have chosen to organize the data based on community districts because if changes or preventative actions are made as a result of our work, it will likely occur at the local level. Our project allows residents to use their voting power to appeal to their local community leaders for impactful changes. Likewise, local community leaders can use our project to make informed, data-driven policies.   
 
-For more information about this project, visit the [google slides](https://docs.google.com/presentation/d/1NuBLtA4dG-Bo6xwujSTi2HlrkTTZjnnAzIHUrRO8FwQ/edit?usp=sharing). 
+For more information about this project, visit the [google slides](https://docs.google.com/presentation/d/1NuBLtA4dG-Bo6xwujSTi2HlrkTTZjnnAzIHUrRO8FwQ/edit?usp=sharing). See speaker notes in the google presentation.
 
 ### Questions Project Hopes to Answer 
 * What types of neighborhoods report high levels of rat sightings? 
