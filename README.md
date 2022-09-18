@@ -111,7 +111,7 @@ Our preliminary model has an accuracy score of 0.6666666. Thus, our model identi
 
 ## Selection of Models and Final Model Results
 
-As part of the process to develop a final product and selecting the best performing model a comparison of different Supervised Learning Models was performed using the 50 percentile division of our rata reports data.  The Models were then compared using the performance metrics provided by the KSlearn functions which are as follows;
+As part of the process to develop a final product and selecting the best performing model a comparison of different Supervised Learning Models was performed using the 50 percentile division of our rat reports data.  The Models were then compared using the performance metrics provided by the KSlearn functions which are as follows;
 
 Accuracy score - The percentage of correct predictions out of total predictions
 ![accuracy](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/accuracy.png)
@@ -160,7 +160,7 @@ Once the Model runs were completed the following table was compiled for comparis
 
 ![Model_Summary_Table](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/Model_Summary_Table.png)
 
-Once again the predictive model scores seem to indicate that the Balanced Random Forest Classifier (BRFC) outs performs the logistic model, with exception of the lower cut off value of 255ile where the logistic model accuracy actually was better at 73%.  The BRFC model however performed really well at the 75%ile level with Accuracy, precision, Sensitivity, Specificity, and F1 scores of 0.81, 0.87, 0.73, 0.90, and 0.75 respectively.  
+Once again the predictive model scores seem to indicate that the Balanced Random Forest Classifier (BRFC) outperforms the logistic model, with exception of the lower cut off value of 25%ile where the Logistic Model was accuracy actually  better at 73%.  The BRFC model however performed really well at the 75%ile level with Accuracy, precision, Sensitivity, Specificity, and F1 scores of 0.81, 0.87, 0.73, 0.90, and 0.75 respectively.  
 The following images are snippets of the code used to generate these figures
 first the models splits the data into a training and testing set.  
 
