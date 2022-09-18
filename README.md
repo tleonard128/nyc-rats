@@ -96,6 +96,101 @@ Next, we trained the model using the code: classifier = LogisticRegression(solve
 Our preliminary model has an accuracy score of 0.5333333333333333. Thus, our model identified 53.3% of test groups accuarately. While the accuaracy score of .53 is below 0.7, it is a significant improvement from the provisional model. Therefore, our logisitic regression model is more accuarate than the linear regression model, but we will need to continue to refine the model. Our group has proposed using under and over sampling techiniques as well as using our weak predicting variables together in a random forest model to increase the accuracy score. Additionaly, we will use imbalanced classification reports that assesses the accuracy, precision, and sensitivity in order to select a final model. 
 
 
+## Selection of Models and Final Model Results
+
+As part of the process to develop a final product and selecting the best performing model a comparison of different Supervised Learning Models was performed using the 50 percentile division of our rata reports data.  The Models were then compared using the performance metrics provided by the KSlearn functions which are as follows;
+
+Accuracy score - The percentage of correct predictions out of total predictions
+![accuracy](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/accuracy.png)
+
+Precision AKA positive predictive value PPV- Is the measure of how reliable a positive classification is. 
+
+Precision = TP/(TP + FP)
+
+In our context:
+I know that the test for rat sightings says this district has more sightings than 50% of all other districts, how likely is it that this district actually has 50% more sightings than all other districts?
+
+Sensitivity AKA Recall - Is the ability of the classifier to find all the positive samples.
+
+Sensitivity TP/(TP + FN)
+
+In our context:
+"I know that this district has more rat sightings than 50% of all other districts, how likely is it that the test will say so?"
+
+F1 Score AKA Harmonic Mean -  is a weighted average of the true positive rate (recall) and precision, where the best score is 1.0 and the worst is 0.0.
+
+F1 = 2(Precision*Sensitivity)/(Precision + Sensitivity)
+
+A useful way to think about the F1 score is that a pronounced imbalance between sensitivity and precision will yield a low F1 score.
+
+A Table summarizing the different Model runs is show below;
+
+![All_Models_compare](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/All_Models_compare.png)
+
+
+As mentioned before a 70% benchmark was used to determine an acceptable performance and the table shows the models performed overall very closely but the Balanced Random Forest Classifier outperformed all other tested models.
+2 top contestants were chosen to undergo some refinement; 
+Logistic Regression Model - just seemed like a natural step up from the linear models and good contender for comparison
+Balanced Random Forest Classifier- best predictive accuracy precision sensitivity specificity and f1 scores
+
+The following steps was to look at how sensitive the models were to the classification division so we took a look at the other percentiles since our data didn't display a natural clustering pattern even when it was normalized so it would not be dependent on any other variable as shown in the next figure
+
+![Normal_distribution](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/Normal_distribution.png)
+
+and the Distribution curve was as follows;
+
+![Rats_CB_NormalDistribution](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/Rats_CB_NormalDistribution.png)
+
+where is can be seen the 25%ile for our data is 1,572 rat reports, the 50%ile is 2,517 and the 75%ile is 3,625 rat reports.
+
+Once the Model runs were completed the following table was compiled for comparison
+
+![Model_Summary_Table](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/Model_Summary_Table.png)
+
+Once again the predictive model scores seem to indicate that the Balanced Random Forest Classifier (BRFC) outs performs the logistic model, with exception of the lower cut off value of 255ile where the logistic model accuracy actually was better at 73%.  The BRFC model however performed really well at the 75%ile level with Accuracy, precision, Sensitivity, Specificity, and F1 scores of 0.81, 0.87, 0.73, 0.90, and 0.75 respectively.  
+The following images are snippets of the code used to generate these figures
+first the models splits the data into a training and testing set.  
+
+![code_train_test_split](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/code_train_test_split.png)
+
+This particular run split the data into stratified sets of 75% training and 25% testing data points.
+
+The accuracy code is 
+![code_balanced_accuracy](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/code_balanced_accuracy.png)
+
+and the commands to generate the other score numbers is as follows
+
+confusion matrix
+![code_confusion_matrix](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/code_confusion_matrix.png)
+
+also summarized as follows
+![75%_confusion_matrix](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/75%25_confusion_matrix.png)
+
+and imbalanced classification report
+![code_imbalanced_classification](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/code_imbalanced_classification.png)
+
+What this means is that the BRFC Model has an overall accuracy of 81%, it can also produce a reliable positive classification 87% of the time, and is able to find 0.73% of all the positive samples making it fairly sensitive.  Its specificity is 90% which means it can predict the lower numbers, below the 75%ile, very well although that is not as important for our analysis since we are more concerned with the extravagant higher numbers of rats.  This model runs also received a F1 score of 71% making it a fairly well balanced model.  
+
+Comparatively and surprisingly the Logistic Model also had an overall accuracy of 80%, the biggest advantage the BRFC Model has over the Logistic Model is that it can rank the input variables (features) by order of importance so we can visualize and understand what influences the model the most.
+
+For this analysis the features were very important in answering some of our original questions regarding socioeconomic characteristics of the different neighborhoods in New York City (Community Districts in our dataset)
+
+once again the comparison of the different percentile model runs proved to be valuable see the following table summarizing the different scenarios feature ranking.
+
+![Model_Features_Ranking](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/Model_Features_Ranking.png)
+
+It can be seen that for all three scenarios the top ranking features are dominated by Residential Land Use and Organic and Paper Trash.  This type of neighborhood characteristics will later be better observed geo spatially in the Dashboard.
+This model seems to be promising in the developments of a predictive tool of rat populations in urban cities such as NYC.  
+It should noted however, that the 50%ile BRFC model could be considered more conservative by lowering the number of rats tolerance or target (depending on the model application) and it still attains same sensitivity even though the overall performance scored at 73%.
+
+## Recommendations
+
+- Continue Looking at other Socioeconomic Data such as Population Density and Household Income in order to find other influential factors
+- Look for same data from different sources in order to further improve the calibration process
+- Environmental factors such as climate data eg: temperature and rainfall
+- Perform more in depth analysis of Time Series 
+- Validate Models using same data from other US cities
+
 --- 
 ## Dashboard 
 
