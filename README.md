@@ -160,7 +160,7 @@ Once the Model runs were completed the following table was compiled for comparis
 
 ![Model_Summary_Table](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/Model_Summary_Table.png)
 
-Once again the predictive model scores seem to indicate that the Balanced Random Forest Classifier (BRFC) outperforms the logistic model, with exception of the lower cut off value of 25%ile where the Logistic Model was accuracy actually  better at 73%.  The BRFC model however performed really well at the 75%ile level with Accuracy, precision, Sensitivity, Specificity, and F1 scores of 0.81, 0.87, 0.73, 0.90, and 0.75 respectively.  
+Once again the predictive model scores seem to indicate that the Balanced Random Forest Classifier (BRFC) outperforms the logistic model, with exception of the lower cut off value of 25%ile where the Logistic Model accuracy was actually  better at 73%.  The BRFC model however performed really well at the 75%ile level with Accuracy, precision, Sensitivity, Specificity, and F1 scores of 0.81, 0.87, 0.73, 0.90, and 0.75 respectively.  
 The following images are snippets of the code used to generate these figures
 first the models splits the data into a training and testing set.  
 
@@ -182,19 +182,19 @@ also summarized as follows
 and imbalanced classification report
 ![code_imbalanced_classification](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/code_imbalanced_classification.png)
 
-What this means is that the BRFC Model has an overall accuracy of 81%, it can also produce a reliable positive classification 87% of the time, and is able to find 0.73% of all the positive samples making it fairly sensitive.  Its specificity is 90% which means it can predict the lower numbers, below the 75%ile, very well although that is not as important for our analysis since we are more concerned with the extravagant higher numbers of rats.  This model runs also received a F1 score of 71% making it a fairly well balanced model.  
+What this means is that the BRFC Model has an overall accuracy of 81%, it can also produce a reliable "Above the 75%ile" classification 87% of the time, and is able to find 0.73% of all the "Above the 75%ile" samples making it fairly sensitive.  Its specificity is 90% which means it can predict the lower numbers, Below the 75%ile, very well although that is not as important for our analysis since we are more concerned with the extravagant higher numbers of rats.  This model runs also received a F1 score of 71% making it a fairly well balanced model.  
 
-Comparatively and surprisingly the Logistic Model also had an overall accuracy of 80%, the biggest advantage the BRFC Model has over the Logistic Model is that it can rank the input variables (features) by order of importance so we can visualize and understand what influences the model the most.
+Comparatively and surprisingly the Logistic Model also had an overall accuracy of 80% when the benchmark or level of tolerance was set to the 75%ile value, but the biggest advantage the BRFC Model has over the Logistic Model is that it can rank the input variables (features) by order of importance so we can visualize and understand what influences the model the most.
 
-For this analysis the features were very important in answering some of our original questions regarding socioeconomic characteristics of the different neighborhoods in New York City (Community Districts in our dataset)
+For this analysis the features were very important in answering some of our original questions regarding how socioeconomic characteristics of the different neighborhoods in New York City (Community Districts in our dataset) impact colonies or rats or "reported Rat" sightings.
 
-once again the comparison of the different percentile model runs proved to be valuable see the following table summarizing the different scenarios feature ranking.
+Once again the comparison of the different percentile model runs proved to be valuable see the following table summarizing the different scenarios feature ranking.
 
 ![Model_Features_Ranking](https://github.com/tleonard128/nyc-rats/blob/Ana_Branch_model2/presentation_report_images/Model_Features_Ranking.png)
 
-It can be seen that for all three scenarios the top ranking features are dominated by Residential Land Use and Organic and Paper Trash.  This type of neighborhood characteristics will later be better observed geo spatially in the Dashboard.
-This model seems to be promising in the developments of a predictive tool of rat populations in urban cities such as NYC.  
-It should noted however, that the 50%ile BRFC model could be considered more conservative by lowering the number of rats tolerance or target (depending on the model application) and it still attains same sensitivity even though the overall performance scored at 73%.
+It can be seen that for all three scenarios the top ranking features are dominated by Residential Land Use and Organic and Paper Garbage.  This type of neighborhood characteristics will later be better observed geo spatially in the Dashboard part of this project.
+This model seems to be promising for the development of a predictive tool of rat populations in urban cities such as NYC.  
+It should noted however, that the 50%ile BRFC model could be considered more conservative by lowering the number of rats tolerance or target (depending on the model's application) and it still attains same sensitivity even though the overall performance scored at 73%.
 
 ## Recommendations
 
